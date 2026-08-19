@@ -1,0 +1,14 @@
+langchain 
+
+langchain-openai 
+pinecone-client 
+unstructured 
+openpyxl 
+pandas 
+langchain-openai
+
+#unstructured[pdf,all-docs]
+#unstructured[local-inference]
+#pillow 
+#pydantic
+
