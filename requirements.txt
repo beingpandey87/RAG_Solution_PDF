@@ -9,6 +9,13 @@ langchain-openai
 
 #unstructured[pdf,all-docs]
 #unstructured[local-inference]
+#unstructured-inference
 #pillow 
 #pydantic
+#pdfminer.six
+#pi-heif
 
+
+#New library#
+pymupdf 
+pillow

@@ -77,7 +77,7 @@ def extract_pdf_resources_for_rag(pdf_path: str):
 # Example execution
 if __name__ == "__main__":
     # Replace with the path to your source document file
-    SAMPLE_PDF = "E:\\ML Live AI ML Projects\\Advance Document RAG\\Sample_Files\\sampleletterdoc.pdf" 
+    SAMPLE_PDF = "E:\\ML Live AI ML Projects\\Document RAG\\Sample_Files\\sampleletterdoc.pdf" 
     
     
     # Ensure a mockup file exists for testing or replace directly with your path
