@@ -1,0 +1,14 @@
+--- Page 2 ---
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+Page 2
+Table of Contents
+1. Introduction to This Sample PDF ............................. 3
+2. Text Formatting and Typography ............................. 4
+3. Lists and Structured Content ................................. 6
+4. Tables and Tabular Data ........................................ 8
+5. Technical Content ................................................. 10
+6. Charts and Data Visualization Concepts ................ 12
+7. Extended Prose Content ......................................... 14
+8. Appendix: Reference Tables .................................. 17
+9. Glossary of Terms ................................................. 19
+10. About Sample-Files.com ..................................... 20

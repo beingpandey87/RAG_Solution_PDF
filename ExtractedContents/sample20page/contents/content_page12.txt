@@ -1,0 +1,20 @@
+--- Page 12 ---
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+Page 12
+6. Charts and Data Visualization Concepts
+While this sample PDF uses tables to present data, real-world PDF documents frequently
+contain embedded charts, graphs, and diagrams. This chapter discusses the data that
+such visualizations might represent, providing reference material for testing chart
+extraction tools.
+6.1 Sample Dataset: Website Traffic
+Table 6.1: Monthly website traffic data (sample data for testing)
+6.2 Data Analysis Notes
+The dataset above shows a typical seasonal traffic pattern: gradual growth through spring
+and summer, peaking in July, followed by a decline through the fall and winter months.
+Bounce rate inversely correlates with session duration — as visitors spend more time on
+the site, fewer leave after viewing only one page.
+In a real PDF report, this data would likely be accompanied by a line chart showing the
+traffic trend, a bar chart comparing page views across months, and possibly a dual-axis
+chart overlaying bounce rate with session duration. PDF extraction tools should be able to
+identify both the tabular data and any accompanying chart images.
+[View Extracted Table]

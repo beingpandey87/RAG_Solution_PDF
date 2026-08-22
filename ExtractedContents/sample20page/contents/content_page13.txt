@@ -1,0 +1,14 @@
+--- Page 13 ---
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+Page 13
+6.3 Regional Distribution Data
+Table 6.2: Traffic by region (sample data for testing)
+6.4 Performance Metrics
+Web performance data often appears in PDF reports alongside traffic data. Common
+metrics include page load time, time to first byte (TTFB), first contentful paint (FCP), and
+cumulative layout shift (CLS). These metrics are typically presented in dashboard-style
+layouts with gauges, progress bars, and color-coded thresholds.
+PDF documents that contain performance reports present a particular challenge for
+extraction tools because the visual layout (colored bars, gauges) carries semantic meaning
+that is lost when extracting only the text layer.
+[View Extracted Table]

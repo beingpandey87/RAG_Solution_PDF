@@ -1,0 +1,9 @@
+--- Page 1 ---
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+Page 1
+Sample PDF Document
+A 20-Page Sample File for Testing and Development
+Provided by Sample-Files.com
+This document is designed for testing PDF readers, parsers,
+upload forms, and document processing workflows.
+[View Extracted Table]

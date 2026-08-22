@@ -1,0 +1,14 @@
+--- Page 7 ---
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+Page 7
+3.4 Definition-Style Lists
+PDF (Portable Document Format): A file format developed by Adobe to present
+documents consistently across all platforms and devices.
+PDF/A (PDF for Archiving): An ISO-standardized version of PDF designed for long-term
+preservation of electronic documents.
+PDF/X (PDF for Exchange): A subset of PDF designed for reliable prepress data
+exchange in the printing and publishing industry.
+PDF/E (PDF for Engineering): A subset of PDF intended for engineering documents,
+supporting interactive 3D content.
+PDF/UA (PDF for Universal Accessibility): A standard ensuring PDF documents are
+accessible to people using assistive technology.
