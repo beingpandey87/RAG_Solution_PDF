@@ -1,10 +1,10 @@
 langchain 
-
 langchain-openai 
 pinecone-client 
 unstructured 
 openpyxl 
 pandas 
+python-dotenv
 langchain-openai
 
 #unstructured[pdf,all-docs]
