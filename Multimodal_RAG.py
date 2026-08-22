@@ -13,7 +13,7 @@ The following diagram illustrates the process of creating a vector database for 
                        
 '''
 
-import os
+import os  
 import fitz  # PyMuPDF
 import os
 from pathlib import Path
@@ -78,11 +78,11 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
             
             # 5. Insert the link in place of the table
             link_rect = fitz.Rect(bbox[0], bbox[1], bbox[0] + 150, bbox[1] + 20) 
-            
+
             # Add visible text for the link
             page.insert_text(
                 link_rect.tl, 
-                "[View Extracted Table]", 
+                "Table Link : "+html_filepath, 
                 color=(0, 0, 1), 
                 fontsize=11
             )
@@ -94,7 +94,6 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
                 "from": link_rect,
                 "uri": f"file:///{os.path.abspath(html_filepath)}"
             }
-            page.insert_link(link_data)
         
         # 2. Fetch text fragments with their structural position data
         final_output=f"\n--- Page {page_num + 1} ---\n"
