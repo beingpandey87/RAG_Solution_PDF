@@ -1,8 +1,0 @@
---- Page 9 ---
-This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
-Page 9
-4.3 Multi-Column Text Table
-The following table contains longer text entries that test how PDF viewers handle cell text
-wrapping and row height adjustment:
-Table 4.3: PDF features and their applications
-[View Extracted Table]

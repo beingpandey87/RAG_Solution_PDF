@@ -97,89 +97,54 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
             page.insert_link(link_data)
         
         # 2. Fetch text fragments with their structural position data
-        # "blocks" format returns tuples: (x0, y0, x1, y1, "text/image_flag", block_no, block_type)
-        # block_type 0 = Text, block_type 1 = Image
-        text_blocks = page.get_text("blocks")
+        final_output=f"\n--- Page {page_num + 1} ---\n"
         
-        # 2. Sort structural elements from top to bottom, then left to right
-        text_blocks.sort(key=lambda b: (b[1], b[0]))
-        
+        # 2. Extract layout structure containing text and images simultaneously
+        page_dict = page.get_text("dict")
+        blocks = page_dict.get("blocks", [])
+        image_counter=1
+        for block in blocks:
+            # Check if block is a Text block (type 0)
+            if block.get("type") == 0:
+                for line in block.get("lines", []):
+                    line_text = "".join([span.get("text", "") for span in line.get("spans", [])])
+                    final_output+=(line_text + "\n")
+            
+            # Check if block is an Image block (type 1)
+            elif block.get("type") == 1:
+                image_bytes = block.get("image")
+                image_ext = block.get("ext", "png") # Default extension type
+                
+                if image_bytes:
+                    # Formulate unique path name
+                    img_filename = f"page_{page_num + 1}_img_{image_counter}.{image_ext}"
+                    img_filepath = os.path.join(image_dir, img_filename)
+                    
+                    # 3. Write raw image byte data to disk
+                    try:
+                        with open(img_filepath, "wb") as img_file:
+                            img_file.write(image_bytes)
                         
-        elements = []
-        
-        # 2. Extract regular text blocks
-        text_blocks = page.get_text("blocks")
-        for b in text_blocks:
-            elements.append({
-                "type": "text",
-                "sorting_key": (b[1], b[0]),  # Sort by Y-top, then X-left coordinate
-                "content": b[4]               # The actual text string
-            })
-            
-        # 3. Extract and save embedded images
-        image_info_list = page.get_images(full=True)
-        for img_idx, img_meta in enumerate(image_info_list):
-            # FIX: Extract the integer xref ID which is always the FIRST item in the metadata tuple
-            xref = img_meta[0] 
-            
-            try:
-                base_image = doc.extract_image(xref)
-                if not base_image:
-                    continue
-                    
-                image_bytes = base_image["image"]
-                image_ext = base_image["ext"]
-                
-                # Build unique file name and save the file
-                img_name = f"page_{i+1}_img_{img_idx+1}_{xref}.{image_ext}"
-                img_path = os.path.join(image_dir, img_name)
-                
-                # Write the raw bytes to your disk
-                with open(img_path, "wb") as f:
-                    f.write(image_bytes)
-                    
-                # Find where this image is physically drawn on the page
-                rects = page.get_image_rects(xref)
-                if rects:
-                    target_rect = rects[0] # Grab its layout box position
-                    elements.append({
-                        "type": "image",
-                        "sorting_key": (target_rect.y0, target_rect.x0), # Sort via screen position
-                        "content": f"\n[Image Link: {img_path}]\n"    # Injected file path text
-                    })
-            except Exception as e:
-                # Catches encrypted or corrupted image streams gracefully
-                print(f"Skipping image xref {xref} due to error: {e}")
-                continue
-
-        # 4. Sort everything combined by its actual vertical layout flow
-        elements.sort(key=lambda x: x["sorting_key"])
-        
-        # 5. Append structural content safely to final payload
-        '''for el in elements:
-            full_output.append(el["content"])'''
-        
-        page_content = f"--- Page {page_num + 1} ---\n"
-        for block in text_blocks:
-            # Check if block is a text block
-            if block[6] == 0: 
-                text_content = block[4].strip()
-                if text_content:
-                    page_content += text_content + "\n"
+                        # 4. Inject structural markdown file path inline 
+                        final_output+=(f"\n[Image Link: {img_filepath}]\n")
+                        image_counter += 1
+                    except Exception as e:
+                        print(f"Error saving image {img_filename}: {e}")
+                        
 
         content_name = f"content_page{page_num+1}.txt"
         content_path = os.path.join(content_dir, content_name)
         with open(content_path, "w",encoding="utf-8") as content_file:
-            content_file.write(page_content)
-        print(page_content)         
-        full_extracted_content.append(page_content)   
+            content_file.write(final_output)
+        print(final_output)         
+        full_extracted_content.append(final_output)   
     doc.close()
     return "".join(full_extracted_content)
 
 # Example execution
 if __name__ == "__main__":
     # Replace with the path to your source document file
-    SAMPLE_PDF = "E:\\ML Live AI ML Projects\\Document RAG\\Sample_Files\\sampleimagedoc.pdf" 
+    SAMPLE_PDF = "E:\\ML Live AI ML Projects\\Document RAG\\Sample_Files\\sample20page.pdf" 
     
     
     # Ensure a mockup file exists for testing or replace directly with your path
