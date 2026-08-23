@@ -7,6 +7,7 @@ numpy
 python-dotenv
 
 pinecone-client 
+langchain-pinecone
 unstructured 
 openpyxl 
 
@@ -22,3 +23,4 @@ openpyxl
 #New library#
 pymupdf 
 pillow
+streamlit
