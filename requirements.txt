@@ -1,11 +1,14 @@
 langchain 
 langchain-openai 
+langchain-text-splitters
+
+pandas 
+numpy
+python-dotenv
+
 pinecone-client 
 unstructured 
 openpyxl 
-pandas 
-python-dotenv
-langchain-openai
 
 #unstructured[pdf,all-docs]
 #unstructured[local-inference]
