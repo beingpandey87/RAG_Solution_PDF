@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-#print(os.getenv('OPENAI_API_KEY'))
  
 def embedding_content(text_content:str, embedding_algo: str="text-embedding-3-small"):   
     embeddings = OpenAIEmbeddings(
