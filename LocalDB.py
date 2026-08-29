@@ -1,8 +1,9 @@
 import sqlite3
 from datetime import datetime
 
+
 def get_connection():
-    return sqlite3.connect("filedata.db")
+    return sqlite3.connect("Databases\\filedata.db")
 
 
 def create_table():
@@ -107,21 +108,7 @@ def drop_table():
 if __name__ == "__main__":
 
     create_table()
-    insert_file_meta("Pranav", "text","Test_Folder" ,0,datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"")
-
+    print("Table created :")
 
     print("All Files:")
     print(get_file_meta_list())
-
-    print("\n File ID 1:")
-    print(get_file_by_id(1))
-
-    #update_employee(1, "Pranav Pandey", "AI Architect", 120000)
-
-    #print("\nAfter Update:")
-    #print(get_employee_by_id(1))
-
-    #delete_employee(2)
-
-    #print("\nAfter Delete:")
-    #print(get_all_employees())

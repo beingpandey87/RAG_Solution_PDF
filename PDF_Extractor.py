@@ -18,22 +18,6 @@ import fitz  # PyMuPDF
 import os
 from pathlib import Path
 
-def create_directories(file_path: str,base_path: str):
-    """
-    Creates the necessary output directories for extracted assets.
-    """
-    Filename = Path(file_path).stem
-    print(f"File Name : {Filename}")
-    images_output_dir = Path(base_path) / Filename / "images"
-    tables_output_dir = Path(base_path) / Filename / "tables"
-    content_output_dir = Path(base_path) / Filename / "contents"
-
-    images_output_dir.mkdir(parents=True, exist_ok=True)
-    tables_output_dir.mkdir(parents=True, exist_ok=True)
-    content_output_dir.mkdir(parents=True, exist_ok=True)
-
-    return images_output_dir, tables_output_dir, content_output_dir
-
 def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
     # Create the folder to save images if it doesn't exist
         
@@ -64,7 +48,7 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
             full_html = f"<html><body>\n{html_table}\n</body></html>"
             
             # 2. Save HTML to a different location
-            html_filename = f"table_page{page_num+1}_{i+1}.html"
+            html_filename = f"table_page_{page_num+1}_{i+1}.html"
             html_filepath = os.path.join(table_dir, html_filename)
             with open(html_filepath, "w", encoding="utf-8") as f:
                 f.write(full_html)
@@ -131,7 +115,7 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
                         print(f"Error saving image {img_filename}: {e}")
                         
 
-        content_name = f"content_page{page_num+1}.txt"
+        content_name = f"content_page_{page_num+1}.txt"
         content_path = os.path.join(content_dir, content_name)
         with open(content_path, "w",encoding="utf-8") as content_file:
             content_file.write(final_output)
@@ -143,13 +127,13 @@ def extract_pdf_data(pdf_path, image_dir,table_dir,content_dir):
 # Example execution
 if __name__ == "__main__":
     # Replace with the path to your source document file
-    SAMPLE_PDF = "E:\\ML Live AI ML Projects\\Document RAG\\Sample_Files\\sample20page.pdf" 
-    
+    SAMPLE_PDF = "C:\\RAG_Practice_Advance\\SampleFiles\\sample20page.pdf" 
+    import utils
     
     # Ensure a mockup file exists for testing or replace directly with your path
     if os.path.exists(SAMPLE_PDF):
-        base_output_dir = "E:\\ML Live AI ML Projects\\Document RAG\\ExtractedContents" 
-        images_dir, tables_dir, content_dir = create_directories(SAMPLE_PDF, base_output_dir)
+        base_output_dir = "C:\\RAG_Practice_Advance\\ExtractedContents" 
+        file_name,images_dir, tables_dir, content_dir = utils.create_directories(SAMPLE_PDF, base_output_dir)
         extracted_content = extract_pdf_data(SAMPLE_PDF, images_dir, tables_dir, content_dir)
         print("Extraction completed. Extracted content:")
         print(extracted_content)

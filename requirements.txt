@@ -1,26 +1,52 @@
-langchain 
-langchain-openai 
-langchain-text-splitters
+# PDF Processing
+PyMuPDF
+tabula-py
+pypdf 
 
-pandas 
+# PPTx Processing
+python-pptx
+
+# Excel processing
+openpyxl
+
+# Word processing
+python-docx
+
+# Vector Search
+faiss-cpu
+
+# Utilities
+pandas
 numpy
+tqdm
+requests
 python-dotenv
 
-pinecone-client 
+# Langchain
+langchain
+langchain-core
+langgraph
+langchain-openai
+langchain-anthropic
+langchain-text-splitters
 langchain-pinecone
-unstructured 
-openpyxl 
 
-#unstructured[pdf,all-docs]
-#unstructured[local-inference]
-#unstructured-inference
-#pillow 
-#pydantic
-#pdfminer.six
-#pi-heif
+# Vector DB
+chromadb
+#pinecone
 
+# App
+streamlit
+
+unstructured[pdf] 
+poppler-utils 
+tesseract-ocr
+unstructured[local-inference]
+unstructured[pdf,all-docs]
+unstructured-inference
 
 #New library#
 pymupdf 
 pillow
 streamlit
+TextLoader

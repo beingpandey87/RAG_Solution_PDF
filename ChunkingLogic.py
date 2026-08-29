@@ -1,14 +1,18 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from bs4 import BeautifulSoup
 import pandas as pd
+import utils
+
 
 def text_content_chunking(text, chunk_size, chunk_overlap):
+
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size, 
         chunk_overlap=chunk_overlap
         )
     chunks = text_splitter.split_text(text)
-    return chunks
+    chunk_ids=list(range(1, len(chunks) + 1))
+    return chunks,chunk_ids
 
 '''
 [HTML File] ➔ [DOM Parser] ➔ Group by Section (H1-H6) ➔ Prepend Context ➔ Text Chunks
@@ -77,7 +81,8 @@ def html_content_recursive_chunking_with_markdown(html_content,chunk_size, chunk
         chunk_overlap=chunk_overlap,
         separators=["\n|", "\n", " ", ""]
     )
-    return splitter.split_text(markdown_table)
+    chunk_ids=list(range(1, len(markdown_table) + 1))
+    return splitter.split_text(markdown_table),chunk_ids
 
 if __name__ == "__main__":
     # Example usage

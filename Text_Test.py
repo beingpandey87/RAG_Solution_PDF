@@ -46,8 +46,8 @@ def query_information(query_data:str):
  
 if __name__ == "__main__": 
     #First Index File
-    path="C:\\RAG_Practice\\mycode\\TestDocs\\text_sample4.txt"
-    index_text_doc(path)
+    #path="C:\\RAG_Practice\\mycode\\TestDocs\\text_sample4.txt"
+    #index_text_doc(path)
     
     #Query Data
     result=query_information("Create a short summary about PDF")
