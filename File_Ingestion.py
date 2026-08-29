@@ -16,7 +16,7 @@ import VectorLogic_ChromaDB
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
-base_output_dir = "C:\\RAG_Practice_Advance\\ExtractedContents" 
+base_output_dir = "E:\\ML Live AI ML Projects\\Document RAG\\ExtractedContents" 
 
 def index_pdf(file_path:str):
     # Creating Local Storage Directory
@@ -56,6 +56,6 @@ if __name__ == "__main__":
     #SAMPLE_PDF = "C:\\RAG_Practice_Advance\\SampleFiles\\sample20page.pdf" 
     #index_pdf(SAMPLE_PDF)
     
-    files_dir = "C:\\RAG_Practice_Advance\\SampleFiles" 
+    files_dir = "E:\\ML Live AI ML Projects\\Document RAG\\SampleFiles" 
     for file_dir in Path(files_dir).glob("*.pdf"):
         index_pdf(str(file_dir))
